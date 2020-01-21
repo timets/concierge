@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>{{ title }}</title>
+	</head>
+	<body>
+		<h1>Tenant list - {{ title }}</h1>
+		<p>{{ text|default:'Not text for this' }}</p>
+		<ul>
+		{% for tenant in object_list %}
+		    <li>{{ tenant.date_of_birth|date }} - <a href="{% url 'simple' %}">{{ tenant.fullname }}</a></li>
+		{% empty %}
+		    <li>No tenents yet.</li>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

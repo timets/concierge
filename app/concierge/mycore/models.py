@@ -36,6 +36,7 @@ class Tenant(models.Model):
         blank=True,
         null=True,
     )
+    sex = models.CharField(max_length=1, default='M')
 
     @property
     def fullname(self):
@@ -48,6 +49,9 @@ class Tenant(models.Model):
         ordering = ['first_name', 'last_name']
         indexes = [
             models.Index(fields=['first_name', 'last_name']),
+        ]
+        permissions = [
+            ('can_comment', 'Can user to make a comment'),
         ]
 
 #TODO model Room

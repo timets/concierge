@@ -24,3 +24,10 @@ Create super user
 
 Apply migrations
 # concierge/manage.py migrate
+
+
+# get user's model
+>>>from django.contrib.auth import get_user_model
+
+# bulk creation
+>>> User.objects.bulk_create([User(username='test_bulk_1'), User(username='test_bulk_2')])

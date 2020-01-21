@@ -2,6 +2,15 @@ version: '3'
 
 services:
 
+    ##### REDIS #####
+    redis:
+        restart: always
+        image: redis:5.0.7
+        volumes:
+            - ./data/redis:/data:rw
+        ports:
+          - 6379:6379
+
     ##### POSTGRES #####
     db:
         restart: always
@@ -29,4 +38,4 @@ services:
         command: "python concierge/manage.py runserver 0.0.0.0:8000"
         depends_on:
           - db
-
+          - redis
